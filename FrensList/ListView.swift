@@ -12,7 +12,6 @@ struct ListView: View {
   @Query private var frens: [FrenModel]
   var body: some View {
     VStack {
-      Text("Hello, World!")
       List(frens) { fren in
         HStack {
           fren.image?
@@ -32,5 +31,5 @@ struct ListView: View {
 
 #Preview {
   ListView()
-    .modelContainer(for: FrenModel.self, inMemory: true)
+    .modelContainer(FrenModel.previewContainer)
 }

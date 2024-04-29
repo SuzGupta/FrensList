@@ -34,15 +34,22 @@ extension FrenModel {
   static var previewContainer: ModelContainer {
     let container = try! ModelContainer(for: FrenModel.self, configurations: ModelConfiguration(isStoredInMemoryOnly: true))
 
-    // Load the UIImage from the asset catalog
-    if let image = UIImage(named: "piper-mcpaw"),
-       let imageData = image.pngData() {  // Convert to PNG format data
+    let imageNamesAndLabels = [
+      ("piper-mcpaw", "Piper McPaw"),
+      ("baxter-beaumont", "Baxter Beaumont"),
+      ("charlie-ledger", "Charlie Ledger"),
+      ("oliver-sterling", "Oliver Sterling"),
+      ("winston-fetcher", "Winston Fetcher")
+    ]
 
-      // Create and insert the new FrenModel instance with the image data
-      let newFren = FrenModel(label: "Piper McPaw", photo: imageData)
-      container.mainContext.insert(newFren)
-    } else {
-      print("Failed to load image data")
+    // Load the UIImage from the asset catalog
+    for (imageName, label) in imageNamesAndLabels {
+      if let image = UIImage(named: imageName), let imageData = image.pngData() {
+        let newFren = FrenModel(label: label, photo: imageData)
+        container.mainContext.insert(newFren)
+      } else {
+        print("Failed to load image or convert data for \(label)")
+      }
     }
 
     return container

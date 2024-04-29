@@ -7,12 +7,20 @@
 
 import Foundation
 import SwiftData
+import SwiftUI
 
 @Model
 class FrenModel {
   let id: UUID
   var label: String
   @Attribute(.externalStorage) var photo: Data
+
+  var image: Image? {
+    if let uiImage = UIImage(data: self.photo) {
+      return Image(uiImage: uiImage)
+    }
+    return nil
+  }
 
   init(id: UUID = UUID(), label: String, photo: Data) {
     self.id = id

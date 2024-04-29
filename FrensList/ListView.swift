@@ -15,7 +15,14 @@ struct ListView: View {
       Text("Hello, World!")
       List(frens) { fren in
         HStack {
-          Image(fren.photo)
+          fren.image?
+            .resizable()
+            .scaledToFit()
+            .frame(width: 50, height: 50)
+          ?? Image(systemName: "photo")
+            .resizable()
+            .scaledToFit()
+            .frame(width: 50, height: 50)
           Text(fren.label)
         }
       }

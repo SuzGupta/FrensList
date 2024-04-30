@@ -11,37 +11,44 @@ import SwiftUI
 struct ContentView: View {
   @Environment(\.modelContext) private var modelContext
   @Query private var frens: [FrenModel]
-  
+
   var body: some View {
     NavigationStack {
       Group {
         if !frens.isEmpty {
-          List(frens) { fren in
-            HStack {
-              fren.image?
-                .resizable()
-                .scaledToFit()
-                .frame(width: 50, height: 50)
-              ?? Image(systemName: "photo")
-                .resizable()
-                .scaledToFit()
-                .frame(width: 50, height: 50)
-              Text(fren.label)
+          List {
+            ForEach(frens) {
+              fren in
+              NavigationLink {
+                DetailView(fren: fren)
+              } label: {
+                HStack {
+                  fren.image?
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 50, height: 50)
+                  ?? Image(systemName: "photo")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 50, height: 50)
+                  Text(fren.label)
+                }
+
+              }
             }
           }
         } else {
           ContentUnavailableView("No frens yet", systemImage: "plus", description: Text("Tap the plus button in the upper right to add your first fren!"))
         }
       }
-
-        .navigationTitle("FrensList")
-        .toolbar {
-          ToolbarItem(placement: .primaryAction) {
-            Button {
-              AddView()
-            } label: {
-              Image(systemName: "plus")
-            }
+      .navigationTitle("FrensList")
+      .toolbar {
+        ToolbarItem(placement: .primaryAction) {
+          Button {
+            AddView()
+          } label: {
+            Image(systemName: "plus")
+          }
         }
       }
     }

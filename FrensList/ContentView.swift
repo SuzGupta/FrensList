@@ -10,21 +10,30 @@ import SwiftUI
 
 struct ContentView: View {
   @Query private var frens: [FrenModel]
+  
   var body: some View {
     NavigationStack {
-      List(frens) { fren in
-        HStack {
-          fren.image?
-            .resizable()
-            .scaledToFit()
-            .frame(width: 50, height: 50)
-          ?? Image(systemName: "photo")
-            .resizable()
-            .scaledToFit()
-            .frame(width: 50, height: 50)
-          Text(fren.label)
+      Group {
+        if !frens.isEmpty {
+          List(frens) { fren in
+            HStack {
+              fren.image?
+                .resizable()
+                .scaledToFit()
+                .frame(width: 50, height: 50)
+              ?? Image(systemName: "photo")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 50, height: 50)
+              Text(fren.label)
+            }
+          }
+        } else {
+          ContentUnavailableView("No frens yet", systemImage: "plus", description: Text("Tap the plus button in the upper right to add your first fren!"))
         }
-      }.navigationTitle("FrensList")
+      }
+
+        .navigationTitle("FrensList")
         .toolbar {
           ToolbarItem(placement: .primaryAction) {
             Button {
@@ -32,8 +41,8 @@ struct ContentView: View {
             } label: {
               Image(systemName: "plus")
             }
-          }
         }
+      }
     }
   }
 }

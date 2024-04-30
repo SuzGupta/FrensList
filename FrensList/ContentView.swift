@@ -5,28 +5,40 @@
 //  Created by Susannah Skyer Gupta on 3/29/24.
 //
 
-import PhotosUI
+import SwiftData
 import SwiftUI
 
 struct ContentView: View {
-  @State private var pickerItem: PhotosPickerItem?
-  @State private var selectedImage: Image?
-
+  @Query private var frens: [FrenModel]
   var body: some View {
-    VStack {
-      PhotosPicker("Select a picture", selection: $pickerItem, matching: .images)
-      selectedImage?
-          .resizable()
-          .scaledToFit()
-    }
-    .onChange(of: pickerItem) {
-      Task {
-        selectedImage = try await pickerItem?.loadTransferable(type: Image.self)
-      }
+    NavigationStack {
+      List(frens) { fren in
+        HStack {
+          fren.image?
+            .resizable()
+            .scaledToFit()
+            .frame(width: 50, height: 50)
+          ?? Image(systemName: "photo")
+            .resizable()
+            .scaledToFit()
+            .frame(width: 50, height: 50)
+          Text(fren.label)
+        }
+      }.navigationTitle("FrensList")
+        .toolbar {
+          ToolbarItem(placement: .primaryAction) {
+            Button {
+              AddView()
+            } label: {
+              Image(systemName: "plus")
+            }
+          }
+        }
     }
   }
 }
 
 #Preview {
   ContentView()
+    .modelContainer(FrenModel.previewContainer)
 }

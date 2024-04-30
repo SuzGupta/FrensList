@@ -12,7 +12,8 @@
 		2AA360132BB7132C00E674A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2AA360122BB7132C00E674A8 /* Assets.xcassets */; };
 		2AA360162BB7132C00E674A8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2AA360152BB7132C00E674A8 /* Preview Assets.xcassets */; };
 		2AA3601D2BB7153800E674A8 /* FrenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA3601C2BB7153800E674A8 /* FrenModel.swift */; };
-		2AAC9DFA2BE04F5700690207 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AAC9DF92BE04F5700690207 /* ListView.swift */; };
+		2AAC9DFC2BE0661100690207 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AAC9DFB2BE0661100690207 /* DetailView.swift */; };
+		2AAC9DFE2BE07AD100690207 /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AAC9DFD2BE07AD100690207 /* AddView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,7 +24,8 @@
 		2AA360152BB7132C00E674A8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2AA3601C2BB7153800E674A8 /* FrenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrenModel.swift; sourceTree = "<group>"; };
 		2AA3603C2BB790CA00E674A8 /* Notes.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Notes.md; sourceTree = "<group>"; };
-		2AAC9DF92BE04F5700690207 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
+		2AAC9DFB2BE0661100690207 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		2AAC9DFD2BE07AD100690207 /* AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,7 +60,8 @@
 			children = (
 				2AA3600E2BB7132B00E674A8 /* FrensListApp.swift */,
 				2AA360102BB7132B00E674A8 /* ContentView.swift */,
-				2AAC9DF92BE04F5700690207 /* ListView.swift */,
+				2AAC9DFD2BE07AD100690207 /* AddView.swift */,
+				2AAC9DFB2BE0661100690207 /* DetailView.swift */,
 				2AA3603C2BB790CA00E674A8 /* Notes.md */,
 				2AA3601C2BB7153800E674A8 /* FrenModel.swift */,
 				2AA360122BB7132C00E674A8 /* Assets.xcassets */,
@@ -145,9 +148,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2AAC9DFA2BE04F5700690207 /* ListView.swift in Sources */,
 				2AA360112BB7132B00E674A8 /* ContentView.swift in Sources */,
+				2AAC9DFE2BE07AD100690207 /* AddView.swift in Sources */,
 				2AA3600F2BB7132B00E674A8 /* FrensListApp.swift in Sources */,
+				2AAC9DFC2BE0661100690207 /* DetailView.swift in Sources */,
 				2AA3601D2BB7153800E674A8 /* FrenModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

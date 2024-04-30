@@ -9,6 +9,7 @@ import SwiftData
 import SwiftUI
 
 struct ContentView: View {
+  @Environment(\.modelContext) private var modelContext
   @Query private var frens: [FrenModel]
   
   var body: some View {

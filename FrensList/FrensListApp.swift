@@ -13,5 +13,6 @@ struct FrensListApp: App {
         WindowGroup {
             ContentView()
         }
+        .modelContainer(for: FrenModel.self)
     }
 }

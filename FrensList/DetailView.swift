@@ -17,14 +17,16 @@ struct DetailView: View {
         fren.image?
           .resizable()
           .scaledToFit()
-//          .frame(width: 50, height: 50)
         ?? Image(systemName: "photo")
           .resizable()
           .scaledToFit()
         Text(fren.label)
+          .font(.title)
       }
     }
 }
+
+//TODO: get preview working
 
 //#Preview {
 //    DetailView()

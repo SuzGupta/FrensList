@@ -11,6 +11,7 @@ import SwiftUI
 struct ContentView: View {
   @Environment(\.modelContext) private var modelContext
   @Query private var frens: [FrenModel]
+  @State private var showAddView = false
 
   var body: some View {
     NavigationStack {
@@ -45,9 +46,12 @@ struct ContentView: View {
       .toolbar {
         ToolbarItem(placement: .primaryAction) {
           Button {
-            AddView()
+            showAddView = true
           } label: {
             Image(systemName: "plus")
+          }
+          .sheet(isPresented: $showAddView) {
+            AddView()
           }
         }
       }

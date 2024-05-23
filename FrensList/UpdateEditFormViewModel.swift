@@ -16,7 +16,7 @@ class UpdateEditFormViewModel {
   var fren: FrenModel?
 
   var image: Image? {
-    if let uiImage = UIImage(data: self.photo!) {
+    if let photo = self.photo, let uiImage = UIImage(data: photo) {
       return Image(uiImage: uiImage)
     } else {
       return Constants.placeholder

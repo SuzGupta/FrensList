@@ -5,6 +5,7 @@
 //  Created by Susannah Skyer Gupta on 3/29/24.
 //
 
+import PhotosUI
 import SwiftData
 import SwiftUI
 
@@ -12,6 +13,7 @@ struct ContentView: View {
   @Environment(\.modelContext) private var modelContext
   @Query private var frens: [FrenModel]
   @State private var showAddView = false
+  @State var imagePicker = ImagePicker()
 
   var body: some View {
     NavigationStack {
@@ -45,12 +47,10 @@ struct ContentView: View {
       .navigationTitle("FrensList")
       .toolbar {
         ToolbarItem(placement: .primaryAction) {
-          Button {
-            showAddView = true
-          } label: {
+          PhotosPicker(selection: $imagePicker.imageSelection) {
             Image(systemName: "plus")
           }
-          .sheet(isPresented: $showAddView) {
+          .sheet(isPresented: $imagePicker.showAddView){
             AddView()
           }
         }

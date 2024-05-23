@@ -10,44 +10,48 @@
 // Buy me a ko-fi:  https://ko-fi.com/StewartLynch
 
 
-import SwiftUI
 import PhotosUI
-
+import SwiftUI
 
 @Observable
 class ImagePicker {
-    
-    var image: Image?
-    var images: [Image] = []
-  
+
+  var image: Image?
+  var images: [Image] = []
+
+  var showAddView = false
+
+  // can we use this without a ViewModel? I think so.
+
   // Change the UpdateEditFormViewModel to match the name of your own ViewModel
-    var vm: UpdateEditFormViewModel?
-    
-    func setup(_ vm: UpdateEditFormViewModel) {
-        self.vm = vm
-    }
-    var imageSelection: PhotosPickerItem? {
-        didSet {
-            if let imageSelection {
-                Task {
-                    try await loadTransferable(from: imageSelection)
-                }
-            }
+  var vm: UpdateEditFormViewModel?
+
+  func setup(_ vm: UpdateEditFormViewModel) {
+    self.vm = vm
+  }
+  var imageSelection: PhotosPickerItem? {
+    didSet {
+      if let imageSelection {
+        Task {
+          try await loadTransferable(from: imageSelection)
         }
+        showAddView = true
+      }
     }
-    
-    @MainActor
-    func loadTransferable(from imageSelection: PhotosPickerItem?) async throws {
-        do {
-            if let data = try await imageSelection?.loadTransferable(type: Data.self) {
-                vm?.photo = data
-                if let uiImage = UIImage(data: data) {
-                    self.image = Image(uiImage: uiImage)
-                }
-            }
-        } catch {
-            print(error.localizedDescription)
-            image = nil
+  }
+
+  @MainActor
+  func loadTransferable(from imageSelection: PhotosPickerItem?) async throws {
+    do {
+      if let data = try await imageSelection?.loadTransferable(type: Data.self) {
+        vm?.photo = data
+        if let uiImage = UIImage(data: data) {
+          self.image = Image(uiImage: uiImage)
         }
+      }
+    } catch {
+      print(error.localizedDescription)
+      image = nil
     }
+  }
 }

@@ -5,27 +5,32 @@
 //  Created by Susannah Skyer Gupta on 3/29/24.
 //
 
-import Foundation
 import SwiftData
 import SwiftUI
+import UIKit
+
+// "we've decorated this with the at-Model macro for SwiftData"
+// (learning Stewart's lingo)
 
 @Model
 class FrenModel {
-  let id: UUID
-  var label: String
-  @Attribute(.externalStorage) var photo: Data
+// Stewart has a different approach for getting an ID that's introduced later
+//  let id: UUID
+  var name: String
+  // the Attribute(.externalStorage) means we want Xcode to decide where to store the data
+  @Attribute(.externalStorage) var data: Data?
 
-  var image: Image? {
-    if let uiImage = UIImage(data: self.photo) {
-      return Image(uiImage: uiImage)
+  var image: UIImage? {
+    if let data {
+      return UIImage(data: data)
+    } else {
+      return nil
     }
-    return nil
   }
 
-  init(id: UUID = UUID(), label: String, photo: Data) {
-    self.id = id
-    self.label = label
-    self.photo = photo
+  init(name: String, data: Data? = nil) {
+    self.name = name
+    self.data = data
   }
 }
 
@@ -43,12 +48,16 @@ extension FrenModel {
     ]
 
     // Load the UIImage from the asset catalog
-    for (imageName, label) in imageNamesAndLabels {
-      if let image = UIImage(named: imageName), let imageData = image.pngData() {
-        let newFren = FrenModel(label: label, photo: imageData)
+
+    // I think this should still work but may need to rewatch Stewart's DataModel and View Setup at 7:06
+  // https://youtu.be/T7wf4DGPCHs?si=ngEL0u_EUDeZN485
+    
+    for (image, name) in imageNamesAndLabels {
+      if let image = UIImage(named: image), let imageData = image.pngData() {
+        let newFren = FrenModel(name: name, data: imageData)
         container.mainContext.insert(newFren)
       } else {
-        print("Failed to load image or convert data for \(label)")
+        print("Failed to load image or convert data for \(name)")
       }
     }
 

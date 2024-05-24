@@ -5,54 +5,49 @@
 //  Created by Susannah Skyer Gupta on 3/29/24.
 //
 
-import PhotosUI
 import SwiftData
 import SwiftUI
 
 struct ContentView: View {
+  @Query(sort: \FrenModel.name) var frens: [FrenModel]
   @Environment(\.modelContext) private var modelContext
-  @Query private var frens: [FrenModel]
-  @State private var showAddView = false
-  @State var imagePicker = ImagePicker()
 
   var body: some View {
     NavigationStack {
       Group {
-        if !frens.isEmpty {
-          List {
-            ForEach(frens) {
-              fren in
-              NavigationLink {
-                DetailView(fren: fren)
+        if frens.isEmpty {
+          ContentUnavailableView("No frens yet", systemImage: "plus", description: Text("Tap the plus button in the upper right to add your first fren!"))
+        } else {
+          List(frens) { fren in
+            NavigationLink(value: fren) {
+              HStack {
+                Image(uiImage: fren.image ?? Constants.placeholder)
+                  .resizable()
+                  .scaledToFit()
+                  .frame(width: 50, height: 50)
+                Text(fren.name)
+                  .font(.title)
+              }
+            }
+            .swipeActions {
+              Button(role: .destructive) {
+                modelContext.delete(fren)
+                try? modelContext.save()
               } label: {
-                HStack {
-                  fren.image?
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 50, height: 50)
-                  ?? Image(systemName: "photo")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 50, height: 50)
-                  Text(fren.label)
-                }
-
+                Image(systemName: "trash")
               }
             }
           }
-        } else {
-          ContentUnavailableView("No frens yet", systemImage: "plus", description: Text("Tap the plus button in the upper right to add your first fren!"))
+          .listStyle(.plain)
         }
+      }
+      .navigationDestination(for: FrenModel.self) { fren in
+        DetailView(fren: fren)
       }
       .navigationTitle("FrensList")
       .toolbar {
-        ToolbarItem(placement: .primaryAction) {
-          PhotosPicker(selection: $imagePicker.imageSelection) {
-            Image(systemName: "plus")
-          }
-          .sheet(isPresented: $imagePicker.showAddView){
-            AddView()
-          }
+        Button { } label: {
+          Image(systemName: "plus.circle.fill")
         }
       }
     }

@@ -14,13 +14,10 @@ struct DetailView: View {
 
     var body: some View {
       VStack {
-        fren.image?
+        Image(uiImage: fren.image ?? Constants.placeholder)
           .resizable()
           .scaledToFit()
-        ?? Image(systemName: "photo")
-          .resizable()
-          .scaledToFit()
-        Text(fren.label)
+        Text(fren.name)
           .font(.title)
       }
     }

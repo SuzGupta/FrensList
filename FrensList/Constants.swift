@@ -10,8 +10,9 @@
 // Buy me a ko-fi:  https://ko-fi.com/StewartLynch
 
 
-import SwiftUI
+import UIKit
 
+// added forced unwrapping to fix Xcode complaints elsewhere
 enum Constants {
-    static let placeholder = Image(systemName: "photo.fill")
+  static let placeholder: UIImage = UIImage(systemName: "photo.fill")!
 }

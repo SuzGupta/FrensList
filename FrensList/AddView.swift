@@ -9,19 +9,13 @@ import PhotosUI
 import SwiftUI
 
 struct AddView: View {
-  @State private var pickerItem: PhotosPickerItem?
-  @State private var selectedImage: Image?
+//  @State var imagePicker = ImagePicker()
   var body: some View {
     VStack {
-      PhotosPicker("Select a picture", selection: $pickerItem, matching: .images)
-      selectedImage?
-        .resizable()
-        .scaledToFit()
-    }
-    .onChange(of: pickerItem) {
-      Task {
-        selectedImage = try await pickerItem?.loadTransferable(type: Image.self)
-      }
+      Text("Hooray, an image")
+////      imagePicker.image?
+//        .resizable()
+//        .scaledToFit()
     }
   }
 }

@@ -5,6 +5,7 @@
 //  Created by Susannah Skyer Gupta on 3/29/24.
 //
 
+import SwiftData
 import SwiftUI
 
 @main

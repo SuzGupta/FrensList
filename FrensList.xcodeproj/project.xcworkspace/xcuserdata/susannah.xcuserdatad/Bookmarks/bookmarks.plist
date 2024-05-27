@@ -12,13 +12,13 @@
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>26</string>
+					<string>45</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>25</string>
+					<string>44</string>
 					<key>Timestamp</key>
-					<string>738216487.331841</string>
+					<string>738461652.686735</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -31,6 +31,8 @@
 					</dict>
 				</dict>
 			</dict>
+			<key>is-complete</key>
+			<true/>
 			<key>text-context</key>
 			<dict>
 				<key>focused</key>
@@ -42,8 +44,8 @@
 </string>
 				<key>trailing</key>
 				<string>
-//#Preview {
-//    DetailView()
+#Preview {
+  Group {
 </string>
 			</dict>
 			<key>type</key>

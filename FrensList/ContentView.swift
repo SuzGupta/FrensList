@@ -16,7 +16,7 @@ struct ContentView: View {
     NavigationStack {
       Group {
         if frens.isEmpty {
-          ContentUnavailableView("No frens yet", systemImage: "plus", description: Text("Tap the plus button in the upper right to add your first fren!"))
+          ContentUnavailableView("No frens yet", systemImage: "plus", description: Text("Tap the blue plus to add your first fren!"))
         } else {
           List(frens) { fren in
             NavigationLink(value: fren) {

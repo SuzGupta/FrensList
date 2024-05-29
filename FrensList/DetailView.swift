@@ -13,6 +13,7 @@ import SwiftUI
 struct DetailView: View {
   @Environment(\.modelContext) private var modelContext
   @Environment(\.dismiss) private var dismiss
+  @State private var formType: ModelFormType?
 
   let fren: FrenModel
 
@@ -25,7 +26,12 @@ struct DetailView: View {
           .font(.title)
           .fontDesign(.rounded)
         HStack {
-          Button("Edit") {}
+          Button("Edit") {
+            formType = .update(fren)
+          }
+          .sheet(item: $formType) { formType in
+            formType
+          }
           Button("Delete", role: .destructive) {
             modelContext.delete(fren)
             try? modelContext.save()

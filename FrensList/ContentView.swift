@@ -11,6 +11,7 @@ import SwiftUI
 struct ContentView: View {
   @Query(sort: \FrenModel.name) var frens: [FrenModel]
   @Environment(\.modelContext) private var modelContext
+  @State private var formType: ModelFormType?
 
   var body: some View {
     NavigationStack {
@@ -46,8 +47,13 @@ struct ContentView: View {
       }
       .navigationTitle("FrensList")
       .toolbar {
-        Button { } label: {
+        Button { 
+          formType = .new
+        } label: {
           Image(systemName: "plus.circle.fill")
+        }
+        .sheet(item: $formType) { formType in
+          formType
         }
       }
     }

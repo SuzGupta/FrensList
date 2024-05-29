@@ -19,6 +19,7 @@
 		2AA3601D2BB7153800E674A8 /* FrenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA3601C2BB7153800E674A8 /* FrenModel.swift */; };
 		2AAC9DFC2BE0661100690207 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AAC9DFB2BE0661100690207 /* DetailView.swift */; };
 		2AAC9DFE2BE07AD100690207 /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AAC9DFD2BE07AD100690207 /* AddView.swift */; };
+		2AC385F42C06BB3500CEA8F7 /* ModelFormType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC385F32C06BB3500CEA8F7 /* ModelFormType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		2AA3603C2BB790CA00E674A8 /* Notes.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Notes.md; sourceTree = "<group>"; };
 		2AAC9DFB2BE0661100690207 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		2AAC9DFD2BE07AD100690207 /* AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
+		2AC385F32C06BB3500CEA8F7 /* ModelFormType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelFormType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 				2AA360102BB7132B00E674A8 /* ContentView.swift */,
 				2A61BE692BFBF91D00D6B7CF /* FormViewModel.swift */,
 				2A61BE6D2BFBFC9000D6B7CF /* FormView.swift */,
+				2AC385F32C06BB3500CEA8F7 /* ModelFormType.swift */,
 				2A61BE712BFC0B3A00D6B7CF /* Image+Style.swift */,
 				2AAC9DFD2BE07AD100690207 /* AddView.swift */,
 				2AAC9DFB2BE0661100690207 /* DetailView.swift */,
@@ -173,6 +176,7 @@
 				2A61BE6C2BFBFA6200D6B7CF /* Constants.swift in Sources */,
 				2AA3601D2BB7153800E674A8 /* FrenModel.swift in Sources */,
 				2A61BE6A2BFBF91D00D6B7CF /* FormViewModel.swift in Sources */,
+				2AC385F42C06BB3500CEA8F7 /* ModelFormType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

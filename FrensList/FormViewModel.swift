@@ -9,7 +9,7 @@ import SwiftUI
 import UIKit
 
 @Observable
-class ViewModel {
+class FormViewModel {
   var name: String = ""
   var data: Data?
 

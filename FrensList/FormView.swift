@@ -43,7 +43,7 @@ struct FormView: View {
                   if vm.image != Constants.placeholder {
                     // Stewart, why do we do this with the JPEG data?
                     fren.data = vm.image.jpegData(compressionQuality: 0.8)
-                    fren.data = vm.image
+//                    fren.data = vm.image
 
                   } else {
                     fren.data = nil
@@ -54,7 +54,7 @@ struct FormView: View {
               } else {
                 let newFren = FrenModel(name: vm.name)
                 if vm.image != Constants.placeholder {
-                  newFren.image = vm.image.jpegData(compressionQuality: 0.8)
+                  newFren.data = vm.image.jpegData(compressionQuality: 0.8)
                 } else {
                   newFren.data = nil
                 }

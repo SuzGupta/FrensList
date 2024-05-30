@@ -31,3 +31,9 @@ If you do choose to use SwiftData, here's an important tip: when storing large d
 
 @Attribute(.externalStorage) var photo: Data
 That tells SwiftData not to save the image data directly inside its database, but to put it alongside instead – it's much more efficient.
+
+what can I do to improve this now?
+
+I wonder how I make the list rows reorderable? I guess that does not go along with the query that sorts alphabetically on first name (which is probably not quite right)
+
+don't I need to add some sort of Photos permission to an info.plist? I guess not for working in the simulator?
